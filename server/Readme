@@ -1,0 +1,18 @@
+npm install
+nodemon index.js
+use o postman para criar novos herois
+
+rode esse script:
+create database ezdevprojeto;
+CREATE TABLE `herois` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`nome` VARCHAR(50) NULL DEFAULT NULL,
+	`img` VARCHAR(50) NULL DEFAULT NULL,
+	`url` VARCHAR(50) NULL DEFAULT NULL,
+	`descricao` VARCHAR(150) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=4
+;
