@@ -15,8 +15,8 @@ export default {
   },
   beforeMount () {
       const resposta = AuthenticationService.consultar()
-      console.log(resposta);
 
+      console.log(resposta);
   }
 }
 </script>
