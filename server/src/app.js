@@ -24,6 +24,17 @@ app.get('/',  (req, res, next) => {
     }, next)
 });
 
+app.get('/show/:id',  (req, res, next) => {
+    const { id } = req.params;
+    knex('herois')
+        .where('id', id)
+        .first()
+        .then((dados) => {
+            if(!dados) return res.send(new errs.BadRequestError('nada foi encontrado'));
+            res.send(dados);
+        }, next)
+});
+
 app.post('/register', (req, res, next) => {
     knex('herois')
         .insert(req.body)
@@ -32,5 +43,28 @@ app.post('/register', (req, res, next) => {
         }, next)
 });
 
+app.put('/update/:id',  (req, res, next) => {
+    const { id } = req.params;
+    knex('herois')
+        .where('id', id)
+        .update(req.body)
+        .then((dados) => {
+            if(!dados) return res.send(new errs.BadRequestError('nada foi encontrado'));
+            res.send('dados atualizados');
+        }, next)
+});
+
+app.del('/delete/:id',  (req, res, next) => {
+    const { id } = req.params;
+    knex('herois')
+        .where('id', id)
+        .delete()
+        .then((dados) => {
+            if(!dados) return res.send(new errs.BadRequestError('nada foi encontrado'));
+            res.send('dados deletados');
+        }, next)
+});
+
 
 app.listen(process.env.PORT || 8081);
+
